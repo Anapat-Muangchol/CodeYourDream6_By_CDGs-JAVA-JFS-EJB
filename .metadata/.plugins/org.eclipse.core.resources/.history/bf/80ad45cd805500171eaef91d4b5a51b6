@@ -1,0 +1,74 @@
+package model;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+
+
+/**
+ * The persistent class for the transaction database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Transaction.findAll", query="SELECT t FROM Transaction t")
+public class Transaction implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private String acctNo;
+	private BigDecimal amount;
+	private Date date;
+	private String type;
+
+	public Transaction() {
+	}
+
+
+	@Id
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	@Column(name="acct_no")
+	public String getAcctNo() {
+		return this.acctNo;
+	}
+
+	public void setAcctNo(String acctNo) {
+		this.acctNo = acctNo;
+	}
+
+
+	public BigDecimal getAmount() {
+		return this.amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDate() {
+		return this.date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+}

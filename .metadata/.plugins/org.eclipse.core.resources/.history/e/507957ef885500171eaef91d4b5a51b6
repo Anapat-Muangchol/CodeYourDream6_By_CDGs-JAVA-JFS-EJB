@@ -1,0 +1,68 @@
+package th.co.cdg.train.ejb.session;
+
+import java.util.List;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import th.co.cdg.train.ejb.entity.Book;
+
+/**
+ * Session Bean implementation class BookQueryManager
+ */
+@Stateless
+@LocalBean
+public class BookQueryManager implements BookQueryLocal {
+
+	@PersistenceContext(unitName = "trainlab")
+	private EntityManager em;
+
+	@Override
+	public Book findBook(Integer id) {
+		return em.find(Book.class, id);
+	}
+
+	@Override
+	public Book queryBookById(Integer id) {
+		final String jpql = "select b from Book b where b.id = :bookId";
+		Query query = em.createQuery(jpql);
+		query.setParameter("bookId", id);
+		return (Book) query.getSingleResult();
+	}
+
+	@Override
+	public List<Book> queryBookByCondition(Book book) {
+		final StringBuilder jpql = new StringBuilder();
+		jpql.append("select b from Book b where 1=1");
+		
+		if(!"".equals(book.getTitle())){
+			jpql.append(" and b.title = :bookTitle");
+		}
+		if(!"".equals(book.getAuthor())){
+			jpql.append(" and b.author = :bookAuthor");
+		}
+		if(book.getPublicationYear() != null){
+			jpql.append(" and b.publicationYear = :bookPublicationYear");
+		}
+		
+		Query query = em.createQuery(jpql.toString());
+		
+		if(!"".equals(book.getTitle())){
+			query.setParameter("bookTitle", book.getTitle());
+		}
+		if(!"".equals(book.getAuthor())){
+			query.setParameter("bookAuthor", book.getAuthor());
+		}
+		if(book.getPublicationYear() != null){
+			query.setParameter("bookPublicationYear", book.getPublicationYear());
+		}
+		
+		return (List<Book>) query.getResultList();
+	}
+	
+	
+
+}

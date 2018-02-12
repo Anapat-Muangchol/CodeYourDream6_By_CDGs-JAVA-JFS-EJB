@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>index</title>
+</h:head> 
+<h:body> 
+	<h:form id="myForm">
+		<div align="center">
+			<b>ประเภทสินค้า</b>
+			<h:selectOneMenu id="categoryCode" value="#{indexCtrl.categoryCode}" onchange="submit()" valueChangeListener="#{indexCtrl.changeCategory}">
+				<f:selectItems value="#{indexCtrl.categorys}" var="c"
+						itemLabel="#{c.categoryName}" itemValue="#{c.categoryCode}" />
+			</h:selectOneMenu>
+			
+			<b>จำนวนรายการที่แสดง</b>
+			<h:selectOneMenu id="numDisplay" value="#{indexCtrl.numDisplay}" onchange="submit()" valueChangeListener="#{indexCtrl.changeNumDisplay}" >
+				<f:selectItem itemLabel="5" itemValue="5" />
+				<f:selectItem itemLabel="10" itemValue="10" />
+			</h:selectOneMenu>
+			
+			<b>
+				รถเข็น(
+				<h:outputText value="#{indexCtrl.cartNum}" id="cartNum" />
+				)
+			</b>
+			
+			<br/>
+			
+			<h:dataTable id="productTable" border="1" var="product" value="#{indexCtrl.products}">
+				<h:column>
+					<f:facet name="header">ชื่อสินค้า</f:facet>
+					<h:outputText id="productName" value="#{product.productName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">รายละเอียด</f:facet>
+					<h:outputText id="detail" value="#{product.detail}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">ราคา</f:facet>
+					<h:outputText id="price" value="#{product.price}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">ดูรายละเอียด</f:facet>
+					<h:commandButton id="viewProductBtn" action="#{indexCtrl.viewDetailProduct(product.productCode)}" value="แสดง" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">ใส่รถเข็น</f:facet>
+					<h:commandButton id="selectProductBtn" action="#{indexCtrl.choose(product.productCode)}" value="เลือก">
+						<f:ajax render="@form" />
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</div>
+	</h:form>
+</h:body> 
+</html>

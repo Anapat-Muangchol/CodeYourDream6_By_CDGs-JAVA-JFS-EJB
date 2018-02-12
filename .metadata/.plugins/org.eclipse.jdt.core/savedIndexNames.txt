@@ -1,0 +1,12 @@
+INDEX VERSION 1.129+D:\Anapat\2017l06l19-23_EJB\workspace\.metadata\.plugins\org.eclipse.jdt.core
+2924950143.index
+1173123698.index
+969417558.index
+4093149902.index
+2680105186.index
+20659354.index
+4235140568.index
+126174003.index
+3439153858.index
+473623024.index
+416233933.index

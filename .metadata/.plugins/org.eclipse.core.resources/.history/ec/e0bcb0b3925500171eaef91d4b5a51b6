@@ -1,0 +1,40 @@
+package th.co.cdg.train.ejb.session;
+
+import java.util.List;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import th.co.cdg.train.ejb.entity.Book;
+
+/**
+ * Session Bean implementation class BookNativeQueryManager
+ */
+@Stateless
+@LocalBean
+public class BookNativeQueryManager implements BookNativeQueryLocal {
+	
+	@PersistenceContext(unitName = "trainlab")
+	private EntityManager em;
+	
+	@Override
+	public Book findBook(Integer id) {
+		
+	}
+
+	@Override
+	public Book queryBookById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> queryBookByCondition(Book book) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+    
+}

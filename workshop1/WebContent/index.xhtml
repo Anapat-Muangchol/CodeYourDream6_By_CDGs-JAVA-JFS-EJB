@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Workshop 1</title>
+</h:head>
+<h:body>
+	<h:form id="myForm">
+		<div align="center">
+			<h:panelGrid columns="4">
+				<h:outputText value="Department" />
+				<h:selectOneMenu id="departmentCode"
+					value="#{employeeController.employee.departmentBean.departmentCode}">
+					<f:selectItem itemLabel="" />
+					<f:selectItems value="#{employeeController.departments}" var="d"
+						itemLabel="#{d.departmentName}" itemValue="#{d.departmentCode}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Job Title" />
+				<h:selectOneMenu id="jobTitleCode"
+					value="#{employeeController.employee.jobTitleBean.jobTitleCode}">
+					<f:selectItem itemLabel="" />
+					<f:selectItems value="#{employeeController.jobTitles}" var="j"
+						itemLabel="#{j.jobTitleName}" itemValue="#{j.jobTitleCode}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Job Type" />
+				<h:selectOneRadio id="jobType"
+					value="#{employeeController.employee.jobTitleBean.jobType}">
+					<f:selectItem itemValue="M" itemLabel="Manage" />
+					<f:selectItem itemValue="O" itemLabel="Operate" />
+				</h:selectOneRadio>
+
+				<h:outputText value="" />
+				<h:outputText value="" />
+
+				<h:outputText value="First Name" />
+				<h:inputText id="firstName"
+					value="#{employeeController.employee.firstName}" />
+
+				<h:outputText value="Last Name" />
+				<h:inputText id="lastName"
+					value="#{employeeController.employee.lastName}" />
+
+				<h:outputText value="Gender" />
+				<h:selectOneRadio id="gender"
+					value="#{employeeController.employee.gender}">
+					<f:selectItem itemValue="M" itemLabel="Male" />
+					<f:selectItem itemValue="F" itemLabel="Female" />
+				</h:selectOneRadio>
+			</h:panelGrid>
+		</div>
+
+		<div align="center">
+			<h:commandButton value="Search" id="searchBtn"
+				action="#{employeeController.search()}">
+				<f:ajax render="employeeTable" execute="myForm" />
+			</h:commandButton>
+			<h:commandButton value="Clear" id="clearBtn"
+				action="#{employeeController.clearForm()}">
+				<f:ajax render="myForm employeeTable" />
+			</h:commandButton>
+		</div>
+
+
+		<div align="center">
+			<h:dataTable border="1" id="employeeTable" var="employee"
+				value="#{employeeController.employees}">
+				<h:column>
+					<f:facet name="header">Department</f:facet>
+					<h:outputText id="departmentName"
+						value="#{employee.departmentBean.departmentName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Job Title</f:facet>
+					<h:outputText id="jobTitleName"
+						value="#{employee.jobTitleBean.jobTitleName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Job Type</f:facet>
+					<h:outputText id="jobType"
+						value="#{employee.jobTitleBean.jobType.equals('M')?'Manage':employee.jobTitleBean.jobType.equals('O')?'Operate':''}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:outputText id="name"
+						value="#{employee.title} #{employee.firstName} #{employee.lastName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Gender</f:facet>
+					<h:outputText id="gender"
+						value="#{employee.gender.equals('M')?'Male':
+                              employee.gender.equals('F')?'Female':''}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</h:form>
+</h:body>
+</html>

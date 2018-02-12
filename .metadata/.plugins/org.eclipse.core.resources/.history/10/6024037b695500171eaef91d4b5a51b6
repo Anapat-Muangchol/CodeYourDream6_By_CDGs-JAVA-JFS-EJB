@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+<h:form>
+	<h:panelGrid columns="2">
+		<h:outputText value="ID : " />
+		<h:inputText value="#{bookController.book.id}" />
+		
+		<h:outputText value="Title : " />
+		<h:inputText value="#{bookController.book.title}" />
+		
+		<h:outputText value="Author : " />
+		<h:inputText value="#{bookController.book.author}" />
+		
+		<h:outputText value="Publication year : " />
+		<h:inputText value="#{bookController.book.publicationYear}" />
+		
+		<h:outputText value="Unit price : " />
+		<h:inputText value="#{bookController.book.unitPrice}" />
+		
+	</h:panelGrid>
+	
+	<h:commandButton action="#{bookController.insertBookToLocal()}" value="Insert" />
+	<h:commandButton action="#{bookController.updateBookToLocal()}" value="Update" />
+	<h:commandButton action="#{bookController.deleteBookToLocal()}" value="Delete" />
+	<br/>
+	<h:commandButton action="#{bookController.insertBookToLocal()}" value="Select" />
+</h:form>
+</h:body> 
+</html>

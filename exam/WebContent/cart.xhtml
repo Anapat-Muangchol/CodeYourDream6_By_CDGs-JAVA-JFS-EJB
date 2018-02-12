@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="myForm">
+		<div align="center">
+			<h:dataTable id="cartTable" border="1">
+				<h:column>
+					<f:facet name="header">ชื่อสินค้า</f:facet>
+					<h:outputText id="productName" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">ราคา</f:facet>
+					<h:outputText id="price" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">จํานวน</f:facet>
+					<h:selectOneMenu id="amount" >
+						<f:selectItem itemLabel="1" itemValue="1" />
+						<f:selectItem itemLabel="2" itemValue="2" />
+						<f:selectItem itemLabel="3" itemValue="3" />
+						<f:selectItem itemLabel="4" itemValue="4" />
+						<f:selectItem itemLabel="5" itemValue="5" />
+						<f:selectItem itemLabel="6" itemValue="6" />
+						<f:selectItem itemLabel="7" itemValue="7" />
+						<f:selectItem itemLabel="8" itemValue="8" />
+						<f:selectItem itemLabel="9" itemValue="9" />
+						<f:selectItem itemLabel="10" itemValue="10" />
+					</h:selectOneMenu>
+				</h:column>
+				<h:column>
+					<f:facet name="header">คํานวณ</f:facet>
+					<h:outputText id="total" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandButton id="delOrderBtn" value="ลบ" />
+				</h:column>
+			</h:dataTable>
+			
+			<h:outputText value="รหัสลูกค้า" />
+			<h:inputText id="customerId" value="." />
+			<h:commandButton id="makeOrderBtn" value="สั่งซื้อ" />
+			<h:commandButton id="backBtn" value="กลับ " />
+		</div>
+	</h:form>
+</h:body> 
+</html>

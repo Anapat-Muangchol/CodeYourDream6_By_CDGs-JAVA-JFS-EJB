@@ -1,0 +1,48 @@
+package th.co.cdg.train.ejb.managedBean;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+
+import th.co.cdg.train.ejb.entity.Book;
+import th.co.cdg.train.ejb.session.BookQueryLocal;
+
+@ManagedBean
+public class BookController {
+	
+	@EJB
+	private BookQueryLocal bookQueryLocal;
+	
+	private Book book;
+	private List<Book> bookListResult = new ArrayList<Book>();
+	
+	public BookController() {
+		book = book == null ? new Book() : book;
+	}
+	
+	public Book getBook() {
+		return book;
+	}
+
+	public List<Book> getBookListResult() {
+		return bookListResult;
+	}
+
+	public void setBookListResult(List<Book> bookListResult) {
+		this.bookListResult = bookListResult;
+	}
+	
+	public void findBook(){
+		bookListResult.add(bookQueryLocal.findBook(book.getId()));
+	}
+
+	public void queryBookById(){
+		bookListResult.add(bookQueryLocal.queryBookById(book.getId()));
+	}
+	
+	public void queryBookByCondition(){
+		bookListResult = bookQueryLocal.queryBookByCondition(book);
+	}
+}

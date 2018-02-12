@@ -1,0 +1,21 @@
+package th.co.cdg.train.ejb.chapter2;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class TestStatelessBean
+ */
+@Stateless
+@LocalBean
+public class TestStatelessBean implements TestStatelessRemote, TestStatelessLocal {
+
+    private int counter = 0;
+
+	@Override
+	public int getCounter() {
+		System.out.println("TestStatelassBean("+this+"):"+counter);
+		return counter++;
+	}
+    
+}

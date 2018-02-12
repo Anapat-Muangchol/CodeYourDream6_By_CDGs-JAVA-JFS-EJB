@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+	<h:form id="myForm">
+		<div align="center">
+			<h:panelGrid columns="2">
+				<h:outputText value="Department" />
+				<h:selectOneMenu id="departmentCode"
+					value="#{employeeEditCtrl.employee.departmentBean.departmentCode}">
+					<f:selectItem itemLabel="" />
+					<f:selectItems value="#{employeeController.departments}" var="d"
+						itemLabel="#{d.departmentName}" itemValue="#{d.departmentCode}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Job Title" />
+				<h:selectOneMenu id="jobTitleCode"
+					value="#{employeeEditCtrl.employee.jobTitleBean.jobTitleCode}">
+					<f:selectItem itemLabel="" />
+					<f:selectItems value="#{employeeController.jobTitles}" var="j"
+						itemLabel="#{j.jobTitleName}" itemValue="#{j.jobTitleCode}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="Gender" />
+				<h:selectOneRadio id="gender"
+					value="#{employeeEditCtrl.employee.gender}">
+					<f:selectItem itemValue="M" itemLabel="Male" />
+					<f:selectItem itemValue="F" itemLabel="Female" />
+				</h:selectOneRadio>
+
+				<h:outputText value="Title" />
+				<h:selectOneMenu id="title"
+					value="#{employeeEditCtrl.employee.title}">
+					<f:selectItem itemValue="" itemLabel="" />
+					<f:selectItem itemValue="MR" itemLabel="MR" />
+					<f:selectItem itemValue="MISS" itemLabel="MISS" />
+					<f:selectItem itemValue="MRS" itemLabel="MRS" />
+				</h:selectOneMenu>
+
+				<h:outputText value="First Name" />
+				<h:inputText id="firstName"
+					value="#{employeeEditCtrl.employee.firstName}" />
+
+				<h:outputText value="Last Name" />
+				<h:inputText id="lastName"
+					value="#{employeeEditCtrl.employee.lastName}" />
+
+				<h:outputText value="Address" />
+				<h:inputTextarea id="address" cols="30" rows="10"
+					value="#{employeeEditCtrl.employee.address}" />
+
+			</h:panelGrid>
+
+			<div align="center">
+				<h:dataTable border="1" id="skillTable" var="skill"
+					value="#{employeeEditCtrl.skills}">
+					<h:column>
+						<f:facet name="header">Skill</f:facet>
+						<h:outputText id="skillName" value="#{skill.skillName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Description</f:facet>
+						<h:outputText id="skillDesc" value="#{skill.skillDesc}" />
+					</h:column>
+				</h:dataTable>
+			</div>
+
+			<div align="center">
+				<h:commandButton value="Submit" id="submitBtn"
+					action="#{employeeEditCtrl.submit()
+					}">
+					<f:ajax render="myForm" execute="myForm" />
+				</h:commandButton>
+				<h:commandButton value="Clear" id="clearBtn"
+					action="#{employeeEditCtrl.clear()}">
+					<f:ajax render="myForm" />
+				</h:commandButton>
+				<h:commandButton value="Back" id="backBtn"
+					action="#{employeeEditCtrl.back()}" />
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>

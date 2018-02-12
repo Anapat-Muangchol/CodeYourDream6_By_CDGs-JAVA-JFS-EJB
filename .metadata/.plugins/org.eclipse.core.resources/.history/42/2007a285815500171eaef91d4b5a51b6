@@ -1,0 +1,55 @@
+package model;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
+
+
+/**
+ * The persistent class for the account database table.
+ * 
+ */
+@Entity
+@Table(name="account")
+@NamedQuery(name="Account.findAll", query="SELECT a FROM Account a")
+public class Account implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private String acctNo;
+	private String acctName;
+	private BigDecimal balance;
+
+	public Account() {
+	}
+
+
+	@Id
+	@Column(name="acct_no", unique=true, nullable=false, length=10)
+	public String getAcctNo() {
+		return this.acctNo;
+	}
+
+	public void setAcctNo(String acctNo) {
+		this.acctNo = acctNo;
+	}
+
+
+	@Column(name="acct_name", length=100)
+	public String getAcctName() {
+		return this.acctName;
+	}
+
+	public void setAcctName(String acctName) {
+		this.acctName = acctName;
+	}
+
+
+	@Column(precision=10, scale=2)
+	public BigDecimal getBalance() {
+		return this.balance;
+	}
+
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
+	}
+
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="myForm">
+	<div align="center">
+		<b><h:outputText value="ข้อมูลสมาชิกและการสั่งซื้อ" /></b>
+		<h:panelGrid columns="2">
+			<h:outputText value="รหัสสมาชิก" />
+			<h:outputText id="customerId" value="." />
+			
+			<h:outputText value="ชื่อ" />
+			<h:outputText id="firstName" value="." />
+			
+			<h:outputText value="นามสกุล" />
+			<h:outputText id="lastName" value="." />
+			
+			<h:outputText value="ที่อยู่" />
+			<h:outputText id="address" value="." />
+			
+			<h:outputText value="รหัสการสั่งซื้อ" />
+			<h:outputText id="orderId" value="." />
+			
+			<h:outputText value="รายการสินค้า" />
+			<h:dataTable id="cartTable" border="1">
+				<h:column>
+					<f:facet name="header">ชื่อสินค้า</f:facet>
+					<h:outputText id="productName" />
+					<f:facet name="footer">รวม</f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ราคา</f:facet>
+					<h:outputText id="price" />
+					<f:facet name="footer"></f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header">จํานวน</f:facet>
+					<h:outputText id="productAmount" />
+					<f:facet name="footer"></f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header">คํานวณ</f:facet>
+					<h:outputText id="total" />
+					<f:facet name="footer">
+						<h:outputText id="orderTotal" value="." />
+					</f:facet>
+				</h:column>
+			</h:dataTable>
+		</h:panelGrid>
+		<h:commandButton id="backBtn" value="กลับ" />
+	</div>
+	</h:form>
+</h:body> 
+</html>

@@ -1,0 +1,5 @@
+package th.co.cdg.train.ejb.client;
+
+public class TestCompareStatelessStateful {
+
+}

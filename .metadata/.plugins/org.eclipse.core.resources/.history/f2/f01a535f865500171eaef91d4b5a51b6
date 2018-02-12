@@ -1,0 +1,20 @@
+package th.co.cdg.train.ejb.session;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class BookQueryManager
+ */
+@Stateless
+@LocalBean
+public class BookQueryManager implements BookQueryManagerLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public BookQueryManager() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

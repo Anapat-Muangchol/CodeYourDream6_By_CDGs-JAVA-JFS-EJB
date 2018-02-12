@@ -1,0 +1,5 @@
+package th.co.cdg.train.ejb.managedBean;
+
+public class BookController {
+
+}

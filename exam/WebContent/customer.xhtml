@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="myForm">
+		<div align="center">
+			<h:outputText value="ข้อมูลสมาชิก" />
+			<h:panelGrid columns="3">
+				<h:outputText value="รหัสสมาชิก" />
+				<h:inputText id="customerId" value="." readonly="true" />
+				<br/>
+				
+				<h:outputText value="ชื่อ" />
+				<h:inputText id="firstName" value="." required="true" requiredMessage="กรุณากรอก : ชื่อ" />
+				<h:message for="firstName" style="color:red" />
+				
+				<h:outputText value="นามสกุล" />
+				<h:inputText id="lastName" value="." required="true" requiredMessage="กรุณากรอก : นามสกุล" />
+				<h:message for="firstName" style="color:red" />
+				
+				<h:outputText value="ที่อยู่" />
+				<h:inputTextarea id="address" cols="21" rows="4" required="true" requiredMessage="กรุณากรอก : ที่อยู่" />
+				<h:message for="firstName" style="color:red" />
+			</h:panelGrid>
+			<h:commandButton action="index" id="okBtn" value="ตกลง" />
+		</div>
+	</h:form>
+</h:body> 
+</html>

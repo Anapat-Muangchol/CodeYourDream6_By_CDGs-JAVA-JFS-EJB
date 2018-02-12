@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="myForm">
+	<div align="center">
+		<table border="1">
+			<tr>
+				<th>รหัสสินค้า</th>
+				<td><h:outputText id="productCode" value="#{indexCtrl.productDetail.productCode}" /></td>
+			</tr>
+			<tr>
+				<th>ชื่อสินค้า</th>
+				<td><h:outputText id="productName" value="#{indexCtrl.productDetail.productName}" /></td>
+			</tr>
+			<tr>
+				<th>รายละเอียด</th>
+				<td><h:outputText id="detail" value="#{indexCtrl.productDetail.detail}" /></td>
+			</tr>
+			<tr>
+				<th>ราคา</th>
+				<td><h:outputText id="price" value="#{indexCtrl.productDetail.price}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<h:commandButton action="index" value="กลับ" id="backBtn" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	</h:form>
+</h:body> 
+</html>

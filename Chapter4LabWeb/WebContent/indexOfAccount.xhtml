@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>Accounts</title>
+</h:head> 
+<h:body> 
+<h:form>
+	<h:panelGrid columns="2" id="conditionForm">
+		<h:outputText value="Account No. : " />
+		<h:inputText value="#{accountController.acctForm.acctNo}" />
+		
+		<h:outputText value="Account Name : " />
+		<h:inputText value="#{accountController.acctForm.acctName}" />
+
+		<h:outputText value="Balance : " />
+		<h:inputText value="#{accountController.acctForm.balance}" />
+		
+	</h:panelGrid>
+	
+	<h:commandButton action="#{accountController.findAccount()}" value="Find Account">
+		<f:ajax render="accountTable" execute="conditionForm" />
+	</h:commandButton>
+	<h:commandButton action="#{accountController.queryAccountByAcctNo()}" value="Query Account By Account No.">
+		<f:ajax render="accountTable" execute="conditionForm" />
+	</h:commandButton>
+	<h:commandButton action="#{accountController.queryAccountByCondition()}" value="Query Account By Condition">
+		<f:ajax render="accountTable" execute="conditionForm" />
+	</h:commandButton>
+	<br/><br/>
+	
+	<h:panelGrid columns="1" id="accountTable">
+		<h:panelGrid columns="2">
+			<h:outputText value="Account No. : " />
+			<h:outputText value="#{accountController.account.acctNo}" />
+		
+			<h:outputText value="Account Name : " />
+			<h:outputText value="#{accountController.account.acctName}" />
+		
+			<h:outputText value="Balance : " />
+			<h:outputText value="#{accountController.account.balance}" />
+		</h:panelGrid>
+		
+		<h:dataTable var="transaction" value="#{accountController.transList}" border="1">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{transaction.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Amount</f:facet>
+				#{transaction.amount}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Type</f:facet>
+				#{transaction.type}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Date</f:facet>
+				#{transaction.date}
+			</h:column>
+		</h:dataTable>
+		
+	</h:panelGrid>
+</h:form>
+</h:body> 
+</html>

@@ -1,0 +1,28 @@
+package th.co.cdg.train.ejb.managedBean;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+
+import th.co.cdg.train.ejb.entity.Book;
+import th.co.cdg.train.ejb.session.BookLocal;
+
+@ManagedBean
+public class BookController {
+	
+	@EJB
+	private BookLocal bookLocal;
+	
+	private Book book;
+	
+	public BookController() {
+		book = book == null ? new Book() : book;
+	}
+	
+	public Book getBook() {
+		return book;
+	}
+	
+	public void setBookToLocal(){
+		bookLocal.insertBook(book);
+	}
+}

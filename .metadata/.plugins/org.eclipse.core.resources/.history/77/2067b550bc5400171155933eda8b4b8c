@@ -1,0 +1,20 @@
+package th.co.cdg.train.ejb.managedBean;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class IndexController {
+	private Integer counter;
+
+	public Integer getCounter() {
+		return counter;
+	}
+
+	public void setCounter(Integer counter) {
+		this.counter = counter;
+	}
+	
+	public void getCounterByLocal(){
+		
+	}
+}

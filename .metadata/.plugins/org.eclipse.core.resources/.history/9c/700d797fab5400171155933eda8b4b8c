@@ -1,0 +1,8 @@
+package th.co.cdg.train.ejb.chapter2;
+
+import javax.ejb.Remote;
+
+@Remote
+public interface TestStatefulRemote {
+
+}

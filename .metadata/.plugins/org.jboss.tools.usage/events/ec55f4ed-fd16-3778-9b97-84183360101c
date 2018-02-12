@@ -1,0 +1,11 @@
+#Tue Jun 20 13:28:11 ICT 2017
+vl=How many times the 'Finish' button pressed during the day
+l=Wizard class name
+ct=jbt
+d=1497940091505
+c=0
+cmp=usage
+a=finishWizard
+cl=org.eclipse.jpt.jpa.ui.internal.wizards.gen.GenerateEntitiesFromSchemaWizard
+v=2.2.2
+s=5

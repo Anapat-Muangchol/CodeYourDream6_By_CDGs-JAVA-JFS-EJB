@@ -1,0 +1,20 @@
+package th.co.cdg.train.ejb.session;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+/**
+ * Session Bean implementation class BookQueryManager
+ */
+@Stateless
+@LocalBean
+public class BookQuery implements BookQueryManagerLocal {
+
+	@PersistenceContext(unitName = "trainlab")
+	private EntityManager em;
+	
+	
+
+}

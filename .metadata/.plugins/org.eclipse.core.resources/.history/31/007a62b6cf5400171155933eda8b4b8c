@@ -1,0 +1,20 @@
+package th.co.cdg.train.ejb.session;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class BookManager
+ */
+@Stateless
+@LocalBean
+public class BookManager implements BookRemote, BookLocal {
+
+    /**
+     * Default constructor. 
+     */
+    public BookManager() {
+        // TODO Auto-generated constructor stub
+    }
+
+}
